@@ -1,0 +1,37 @@
+{
+  "name": "cordova-plugin-open-native-settings",
+  "version": "3.1.0",
+  "description": "Cordova plugin to Open Native Settings",
+  "cordova": {
+    "id": "cordova-plugin-open-native-settings",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmadNsour/Cordova-open-native-settings.git"
+  },
+  "author": "Ahmad Nsour",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AhmadNsour/Cordova-open-native-settings/issues"
+  },
+  "homepage": "https://github.com/AhmadNsour/Cordova-open-native-settings#readme",
+  "funding": "https://github.com/AhmadNsour/Cordova-open-native-settings?sponsor=1",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "scripts": {
+    "preversion": "npm run docs && rm -rf docs",
+    "version": "perl -i -pe 's/(version=)\"\\d+\\.\\d+\\.\\d+\"/$1\"'$npm_package_version'\"$2/' plugin.xml && git add .",
+    "postversion": "git push && git push --tags",
+    "predocs": "tsc www/* --declaration --allowJs --checkJs --lib es2015,dom --emitDeclarationOnly --outDir types",
+    "docs": "typedoc && perl -i -pe 's/README.md#/#/g' ./docs/README.md",
+    "postdocs": "perl -i -0pe 's/(<!-- TypedocGenerated -->).*/$1\n\n/gms' README.md && cat ./docs/README.md >> README.md"
+  }
+}
