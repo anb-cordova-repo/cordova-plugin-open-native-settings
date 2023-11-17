@@ -37,7 +37,10 @@ public class NativeSettings extends CordovaPlugin {
     if (action.equals("open")) {
       this.cordova.getActivity()
         .startActivity(
-          new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+          new Intent(
+            android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+            packageUri
+          )
         );
     } else if (action.equals("accessibility")) {
       this.cordova.getActivity()
